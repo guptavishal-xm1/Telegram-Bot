@@ -74,6 +74,16 @@ public class myBot implements SpringLongPollingBot, LongPollingSingleThreadUpdat
                 } else {
                     System.out.println("usee already exist"); // redundant for testing
                 }
+                SendMessage msg = SendMessage
+                        .builder()
+                        .chatId(chatId)
+                        .text("use /getvideo to start and don't forget to buy our subscription to unlimited fapping \uD83C\uDF46 \uD83D\uDCA6 ")
+                        .build();
+                try {
+                    telegramClient.execute(msg);
+                }catch (TelegramApiException e){
+                    e.printStackTrace();
+                }
             } else if (text.equals("/getvideo")) {
                 if (!chekUser(chatId)){
                     SendMessage msg = SendMessage
@@ -124,7 +134,7 @@ public class myBot implements SpringLongPollingBot, LongPollingSingleThreadUpdat
             System.out.println("video sent");
         } catch (TelegramApiException e){
             System.out.println("something went wrong");
-            System.out.println(e);
+
             e.fillInStackTrace();
         }
     }
